@@ -19,5 +19,12 @@ namespace TaskWebApp.Api.Repositories
             if (index >= 0)
                 _tasks[index] = task;
         }
+        public void Delete(Guid id)
+        {
+            var task = _tasks.FirstOrDefault(t => t.Id == id);
+            if (task != null)
+                _tasks.Remove(task);
+        }
+
     }
 }

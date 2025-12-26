@@ -34,5 +34,15 @@ namespace TaskWebApp.Api.Services
             _repo.Update(existing);
             return existing;
         }
+
+        public bool Delete(Guid id)
+        {
+            var existing = _repo.GetById(id);
+            if (existing == null) return false;
+
+            _repo.Delete(id);
+            return true;
+        }
+
     }
 }

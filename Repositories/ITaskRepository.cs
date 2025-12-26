@@ -8,6 +8,8 @@ namespace TaskWebApp.Api.Repositories
         List<TaskItem> GetAll();
         TaskItem? GetById(Guid id);
         void Update(TaskItem task);
+        void Delete(Guid id);
+
     }
 }
 

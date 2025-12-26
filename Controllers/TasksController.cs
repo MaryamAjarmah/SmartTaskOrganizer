@@ -24,5 +24,15 @@ namespace TaskWebApp.Api.Controllers
 
             return Ok(updated);
         }
+        [HttpDelete("{id}")]
+        public IActionResult Delete(Guid id)
+        {
+            var deleted = _service.Delete(id);
+            if (!deleted)
+                return NotFound();
+
+            return NoContent(); // 204
+        }
+
     }
 }
