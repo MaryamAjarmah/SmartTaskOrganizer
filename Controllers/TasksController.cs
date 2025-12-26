@@ -31,8 +31,43 @@ namespace TaskWebApp.Api.Controllers
             if (!deleted)
                 return NotFound();
 
-            return NoContent(); // 204
+            return NoContent(); 
         }
+        [HttpGet]
+        public IActionResult GetAll(
+     [FromQuery] TaskWebApp.Api.Models.TaskStatus? status,
+     [FromQuery] TaskPriority? priority,
+     [FromQuery] string? sortBy)
+        {
+            var tasks = _service.GetAll();
+
+            if (status.HasValue)
+            {
+                tasks = tasks
+                    .Where(t => t.Status == status.Value)
+                    .ToList();
+            }
+
+            if (priority.HasValue)
+            {
+                tasks = tasks
+                    .Where(t => t.Priority == priority.Value)
+                    .ToList();
+            }
+
+            if (!string.IsNullOrEmpty(sortBy))
+            {
+                if (sortBy.Equals("deadline", StringComparison.OrdinalIgnoreCase))
+                    tasks = tasks.OrderBy(t => t.Deadline).ToList();
+
+                if (sortBy.Equals("priority", StringComparison.OrdinalIgnoreCase))
+                    tasks = tasks.OrderBy(t => t.Priority).ToList();
+            }
+
+            return Ok(tasks);
+        }
+
+
 
     }
 }

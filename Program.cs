@@ -11,6 +11,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<ITaskRepository, InMemoryTaskRepository>();
 builder.Services.AddScoped<TaskService>();
 
+builder.Services.AddSingleton<FileStorageService>();
+builder.Services.AddSingleton<ITaskRepository, InMemoryTaskRepository>();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
