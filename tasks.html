@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tasks</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    font-family:Poppins;
+    background:linear-gradient(135deg,#c44dcf,#764ba2);
+    color:white;
+}
+
+
+.navbar{
+    padding:20px 40px;
+    display:flex;
+    justify-content:space-between;
+}
+.navbar a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+}
+
+
+.container{
+    max-width:900px;
+    margin:40px auto;
+    background:rgba(255,255,255,0.15);
+    padding:40px;
+    border-radius:25px;
+}
+
+
+.form{
+    display:grid;
+    grid-template-columns:2fr 1fr auto;
+    gap:15px;
+    margin-bottom:30px;
+}
+input,select{
+    padding:12px;
+    border-radius:12px;
+    border:none;
+    outline:none;
+}
+.add-btn{
+    background:white;
+    color:#5a67d8;
+    border:none;
+    border-radius:30px;
+    padding:12px 22px;
+    cursor:pointer;
+}
+
+
+.task-list{
+    list-style:none;
+    padding:0;
+}
+.task{
+    background:rgba(255,255,255,0.2);
+    padding:18px;
+    border-radius:18px;
+    margin-bottom:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    transition:.3s;
+}
+.task:hover{
+    background:rgba(255,255,255,0.3);
+    transform:translateY(-4px);
+}
+.task.completed{
+    opacity:0.6;
+    text-decoration:line-through;
+}
+.task span{
+    font-weight:500;
+}
+.actions a{
+    margin-left:10px;
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+}
+.actions a:hover{
+    opacity:.8;
+}
+
+
+.footer-actions{
+    text-align:center;
+    margin-top:30px;
+}
+.footer-actions a{
+    color:white;
+    text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+
+<nav class="navbar">
+<div><strong>Smart Task Organizer</strong></div>
+<div>
+<a href="index.html">Home</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="tasks.html">Tasks</a>
+<a href="settings.html">Settings</a>
+</div>
+</nav>
+
+
+<div class="container">
+<h2>📋 Task Management</h2>
+<p>Add your tasks and organize your day ✨</p>
+
+
+<div class="form">
+<input type="text" placeholder="Task title">
+<select>
+<option>High</option>
+<option>Medium</option>
+<option>Low</option>
+</select>
+<button class="add-btn" onclick="addTask()">➕ Add</button>
+</div>
+
+
+<ul class="task-list"></ul>
+
+<div class="footer-actions">
+<a href="settings.html">⚙️ Settings</a>
+</div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
